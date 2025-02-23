@@ -1,0 +1,163 @@
+/* 明暗模式 */
+.light {
+    --background: #ffffff;
+    --text: #000000;
+    --card-bg: #ffffff;
+    --card-opacity: 90%;
+    --border: #e5e7eb;
+    --shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+    --background: #1a202c;
+    --text: #ffffff;
+    --card-bg: #2d3748;
+    --card-opacity: 80%;
+    --border: #4a5568;
+    --shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--background);
+    color: var(--text);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Noto Serif SC', 'Source Code Pro', 'DM Mono', Arial, sans-serif;
+}
+
+body:lang(en) {
+    font-family: 'Source Code Pro', 'Noto Serif SC', 'DM Mono', Arial, sans-serif;
+}
+
+body:lang(zh) {
+    font-family: 'Noto Serif SC', 'Source Code Pro', 'DM Mono', Arial, sans-serif;
+}
+
+.neko-bg {
+    background-image: url('/static/images/NekoDreamscape.png');
+}
+
+.cat-bg {
+    background-image: url('/static/images/NekoDreamscape.png');
+}
+
+.shadow-2xl {
+    box-shadow: var(--shadow);
+}
+
+.bg-white {
+    background-color: var(--card-bg) !important;
+    background-opacity: var(--card-opacity) !important;
+}
+
+.border-gray-300 {
+    border-color: var(--border) !important;
+}
+
+.border-pink-300 {
+    border-color: #f472b6 !important;
+}
+
+.border-purple-300 {
+    border-color: #b794f4 !important;
+}
+
+.bg-pink-200 {
+    background-color: rgba(251, 207, 232, 0.8) !important;
+}
+
+.bg-purple-200 {
+    background-color: rgba(221, 214, 254, 0.8) !important;
+}
+
+.bg-indigo-200 {
+    background-color: rgba(199, 210, 254, 0.8) !important;
+}
+
+.text-pink-800 {
+    color: #9d174d !important;
+}
+
+.text-purple-800 {
+    color: #6b21a8 !important;
+}
+
+.text-indigo-800 {
+    color: #3730a3 !important;
+}
+
+.transition {
+    transition: all 0.3s ease;
+}
+
+.hover:scale-105:hover {
+    transform: scale(1.05);
+}
+
+.cursor-pointer {
+    cursor: pointer; /* 确保按钮有手型光标 */
+}
+
+input:focus {
+    outline: none;
+    border-color: #FF69B4;
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.3);
+}
+
+.drop-shadow-lg {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.drop-shadow-md {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* 心跳动画 */
+.animate-pulse-slow {
+    animation: pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.7); /* 紫色光晕 */
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 8px rgba(147, 51, 234, 0);
+    }
+}
+
+/* 调整按钮样式 */
+#languageSwitch, #themeSwitch {
+    font-family: 'Source Code Pro', 'Noto Serif SC', 'DM Mono', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+/* 调整密码眼球按钮样式 */
+#togglePassword {
+    position: absolute;
+    right: 0.75rem; /* 对应 right-3 */
+    top: 2.375rem; /* 对应 top-[38px]，根据输入框高度调整 */
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+#togglePassword i {
+    transition: color 0.3s ease;
+}
+
+#togglePassword:hover i {
+    color: #f472b6; /* 更鲜艳的粉色 */
+}
+
+/* 确保输入框和按钮重叠不会遮挡 */
+input[type="password"], input[type="text"] {
+    padding-right: 2.5rem; /* 增加右边距，容纳按钮 */
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ g.locale or 'zh-CN' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _('注册 - CatCare') }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+SC:wght@400;500;600&family=Source+Code+Pro:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkXAgraGb3z0m4+1HQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-cover bg-center min-h-screen flex items-center justify-center neko-bg {{ 'dark' if session.get('theme', 'light') == 'dark' else 'light' }}">
+    <div class="fixed top-4 right-4 flex space-x-2 z-50">
+        <button id="languageSwitch" class="bg-purple-200 text-purple-800 p-2 rounded-lg shadow hover:bg-purple-300 transition cursor-pointer">
+            <i class="fas fa-globe fa-lg"></i> <!-- 语言图标（地球） -->
+            <span class="ml-1 text-sm">{% if g.locale == 'zh' %}中文{% else %}EN{% endif %}</span>
+        </button>
+        <button id="themeSwitch" class="bg-purple-200 text-purple-800 p-2 rounded-lg shadow hover:bg-purple-300 transition cursor-pointer">
+            <i class="fas {% if session.get('theme', 'light') == 'light' %}fa-sun{% else %}fa-moon{% endif %} fa-lg"></i> <!-- 明亮/暗黑图标（太阳/月亮） -->
+            <span class="ml-1 text-sm">{% if session.get('theme', 'light') == 'light' %}明{% else %}暗{% endif %}</span>
+        </button>
+    </div>
+    <div class="bg-purple-200 bg-opacity-80 p-8 rounded-2xl shadow-2xl w-full max-w-md transform transition duration-300 hover:scale-105 border-4 border-purple-300 animate-pulse-slow">
+        <h2 class="text-3xl font-bold text-center text-purple-800 mb-6 drop-shadow-lg">{{ _('欢迎注册 CatCare') }}</h2>
+        {% if error %}
+            <p class="text-red-500 text-center mb-4 drop-shadow-md">{{ error }}</p>
+        {% endif %}
+        <form method="POST" class="space-y-6">
+            <div>
+                <label class="block text-lg font-medium text-purple-700 drop-shadow-md">{{ _('用户名') }}</label>
+                <input type="text" name="username" class="mt-2 block w-full border-purple-300 rounded-xl shadow-inner focus:ring-purple-500 focus:border-purple-500 p-3 text-lg bg-white bg-opacity-80" required>
+            </div>
+            <div>
+                <label class="block text-lg font-medium text-purple-700 drop-shadow-md">{{ _('邮箱') }}</label>
+                <input type="email" name="email" class="mt-2 block w-full border-purple-300 rounded-xl shadow-inner focus:ring-purple-500 focus:border-purple-500 p-3 text-lg bg-white bg-opacity-80" required>
+            </div>
+            <div>
+                <label class="block text-lg font-medium text-purple-700 drop-shadow-md">{{ _('密码') }}</label>
+                <input type="password" name="password" class="mt-2 block w-full border-purple-300 rounded-xl shadow-inner focus:ring-purple-500 focus:border-purple-500 p-3 text-lg bg-white bg-opacity-80" required>
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-3 rounded-xl hover:from-purple-600 hover:to-indigo-600 transition-transform transform hover:scale-105 text-lg font-semibold shadow-lg">{{ _('注册') }}</button>
+        </form>
+        <p class="text-center text-purple-600 mt-4 drop-shadow-md">{{ _('已有账号？') }}<a href="{{ url_for('login') }}" class="hover:text-purple-800 underline">{{ _('立即登录') }}</a></p>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
