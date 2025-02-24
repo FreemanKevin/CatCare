@@ -135,9 +135,10 @@ input:focus {
     font-family: 'Source Code Pro', 'Noto Serif SC', 'DM Mono', Arial, sans-serif;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-/* 调整密码眼球按钮样式 */
+/* 调整密码眼球按钮样式（保留，因为登录页仍需要） */
 #togglePassword {
     position: absolute;
     right: 0.75rem; /* 对应 right-3 */

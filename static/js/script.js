@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeSwitch = document.getElementById('themeSwitch');
     if (themeSwitch) {
         themeSwitch.addEventListener('click', () => {
-            const currentTheme = document.querySelector('#themeSwitch i').classList.contains('fa-sun') ? 'dark' : 'light';
+            const currentTheme = document.querySelector('#themeSwitch span').textContent === '明' ? 'dark' : 'light';
             fetch(`/switch-theme/${currentTheme}`)
                 .then(response => {
                     if (!response.ok) throw new Error('Network response was not ok');
